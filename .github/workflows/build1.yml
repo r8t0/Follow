@@ -97,15 +97,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cat apps/renderer/src/pages/(external)/login.tsx
-          pnpm-error i
+          pnpm i
 
       - name: Build
         if: matrix.os != 'macos-latest'
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
-          cat apps/renderer/src/pages/(external)/login.tsx
           pnpm build
 
       - name: Build (macOS)
