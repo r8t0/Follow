@@ -25,7 +25,7 @@ function Login() {
   const urlParams = new URLSearchParams(location.search)
   const provider = urlParams.get("provider")
 
-  const isAuthenticated = status === "authenticated"
+  const isAuthenticated = true
   const onOpenInWebApp = () => {
     if (isAuthenticated) {
       navigate("/")
