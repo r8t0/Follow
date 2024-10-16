@@ -1,11 +1,6 @@
-name: Build
+name: Build1
 
 on:
-  push:
-    branches:
-      - "**"
-    tags:
-      - "v*"
   workflow_dispatch:
     inputs:
       tag_version:
@@ -101,13 +96,17 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
       - name: Install dependencies
-        run: pnpm i
+        run: |
+          cat apps/renderer/src/pages/(external)/login.tsx
+          pnpm-error i
 
       - name: Build
         if: matrix.os != 'macos-latest'
-        run: pnpm build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          cat apps/renderer/src/pages/(external)/login.tsx
+          pnpm build
 
       - name: Build (macOS)
         if: matrix.os == 'macos-latest'
